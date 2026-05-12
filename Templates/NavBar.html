@@ -3,19 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <nav>
-        <div>
+    <nav id="Navbar">
+        <div class="Nav-Logo">
+            <img src="">
+        </div>
+        <div class="Nav-Links">
             <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/Gallery">Gall</a></li>
-                <li><a href="/About">Us</a></li>
-                <li><a href="/Contact">Cont</a></li>
-                <li><a href="/SignIn">Sign</a></li>
+                <li><a href="/Index.html">Inicio</a></li>
+                <li><a href="/Gallery.html">Galeria</a></li>
+                <li><a href="/About.html">Nosotros</a></li>
+                <li><a href="/Contact.html">Contacto</a></li>
+                <li><a href="/SignIn.html">Iniciar Sesión</a></li>
             </ul>
         </div>
     </nav>
 </body>
+<!--
+<style>
+    #Navbar {
+        background-color: #F5F2EE;
+        width: 100%;
+        height: 50px;
+    }
+
+    .Nav-Links {
+        display: inline;
+        float: right;
+        line-height: 0px;
+        text-align: center;
+    }
+
+    ul{
+        list-style-type: none;
+    }
+
+    ul li {
+        display: inline;
+        margin: 50px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover {
+        color: #66D1C7;
+    }
+</style>
+-->
 </html>
