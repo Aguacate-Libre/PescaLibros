@@ -296,7 +296,7 @@ def signup():
         usuario_existente = Usuario.query.filter_by(email=email).first()
         if usuario_existente:
             flash('Este correo ya está registrado.')
-            return redirect(url_for('signup'))
+            return redirect(url_for('signup.html'))
             
         # Cifrar la contraseña
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
@@ -307,7 +307,7 @@ def signup():
         db.session.commit()
         
         flash('Registro exitoso. Ahora puedes iniciar sesión.')
-        return redirect(url_for('signin'))
+        return redirect(url_for('signin.html'))
         
     # Si es GET, solo mostramos la página
     return render_template('signin.html')

@@ -1,5 +1,9 @@
 {% extends "NavBar.html" %}
 
+{% block title %}signup{% endblock %}
+
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +18,7 @@
             <img src="">
         </div>
 
-        <p>Inicia Sesion</p>
+        <p>Registrate</p>
 
         <form>
 
@@ -55,20 +59,12 @@
                 autofocus>
             </div>
 
-            <div class="form-links">
-                <a href="/forgot-password">olvide mi contraseña</a>
-            </div>
-
             <div class="form-action">
                 <input class="submit" type="submit" value="Ingresar">
             </div>
-
-            <div class="form-links">
-                <p>No tienees cuenta? </p>
-                <a href="/SignIn">Registrate</a>
-            </div>
-
         </form>
     </div>
 </body>
 </html>
+
+{% endblock %}
