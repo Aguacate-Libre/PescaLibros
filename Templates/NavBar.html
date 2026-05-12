@@ -12,47 +12,18 @@
         </div>
         <div class="Nav-Links">
             <ul>
-                <li><a href="/Index.html">Inicio</a></li>
-                <li><a href="/Gallery.html">Galeria</a></li>
-                <li><a href="/About.html">Nosotros</a></li>
-                <li><a href="/Contact.html">Contacto</a></li>
-                <li><a href="/SignIn.html">Iniciar Sesión</a></li>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/gallery.html">Galeria</a></li>
+                <li><a href="/about.html">Nosotros</a></li>
+                <li><a href="/contact.html">Contacto</a></li>
+                <li><a href="/shelf.html">Librero</a></li>
+                <li><a href="/signIn.html">Iniciar Sesión</a></li>
             </ul>
         </div>
     </nav>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
 </body>
-<!--
-<style>
-    #Navbar {
-        background-color: #F5F2EE;
-        width: 100%;
-        height: 50px;
-    }
-
-    .Nav-Links {
-        display: inline;
-        float: right;
-        line-height: 0px;
-        text-align: center;
-    }
-
-    ul{
-        list-style-type: none;
-    }
-
-    ul li {
-        display: inline;
-        margin: 50px;
-    }
-
-    a {
-        text-decoration: none;
-        color: black;
-    }
-
-    a:hover {
-        color: #66D1C7;
-    }
-</style>
--->
 </html>

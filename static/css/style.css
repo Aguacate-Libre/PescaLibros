@@ -1,0 +1,40 @@
+/*Navbar*/
+
+#Navbar {
+    background-color: #F5F2EE;
+    width: 100%;
+    height: 50px;
+}
+
+.Nav-Links {
+    display: inline;
+    float: right;
+    line-height: 0px;
+    text-align: center;
+}
+
+ul{
+    list-style-type: none;
+}
+
+ul li {
+    display: inline;
+    margin: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #66D1C7;
+}
+
+/*Index*/
+
+#container{
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+}

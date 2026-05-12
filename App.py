@@ -90,9 +90,9 @@ with app.app_context():
 
 @app.route('/')
 def inicio():
-    return render_template('Index.html')
+    return render_template('index.html')
 
-@app.route('/gallery')
+@app.route('/gallery.html')
 def gallery():
     # Capturar lo que el usuario escribio en la searchbar
     # Usamos request.args para peticiones GET
@@ -119,7 +119,7 @@ def gallery():
     catalogo = query.all()
 
     # Mandar los libros y el termino de busqueda (por si Oscar quiere dejarlo escrito en la barra)
-    return render_template('Gallery.html', libros=catalogo, busqueda=termino_busqueda)
+    return render_template('gallery.html', libros=catalogo, busqueda=termino_busqueda)
 
 @app.route('/comprar/<int:libro_id>', methods=['POST'])
 @login_required
@@ -210,7 +210,7 @@ def vender_libro():
     # Oscar preparara un archivo para esto (tal vez sea transaction o el de vender)
     return render_template('Transaction.html')
 
-@app.route('/book/<int:libro_id>')
+@app.route('/book.html/<int:libro_id>')
 def detalle_libro(libro_id):
     # Buscar libro por su id
     libro = Libro.query.get_or_404(libro_id)
@@ -257,7 +257,7 @@ def agregar_al_librero(libro_id):
     # a la pagina exacta donde estaba (sea la galeria o los detalles del libro)
     return redirect(request.referrer or url_for('gallery'))
 
-@app.route('/my_shelf')
+@app.route('/shelf.html')
 @login_required
 def mi_librero():
     # Optimizacion de consulta (JOIN)
@@ -283,7 +283,7 @@ def eliminar_del_librero(libro_id):
     # Regresar a que vean su librero
     return redirect(url_for('mi_librero'))
 
-@app.route('/signup', methods=['GET', 'POST'])
+@app.route('/signup.html', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
         # Capturar los datos del formulario HTML
@@ -307,13 +307,13 @@ def signup():
         db.session.commit()
         
         flash('Registro exitoso. Ahora puedes iniciar sesión.')
-        return redirect(url_for('login'))
+        return redirect(url_for('signin'))
         
     # Si es GET, solo mostramos la página
-    return render_template('SignIn.html')
+    return render_template('signin.html')
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+@app.route('/signin.html', methods=['GET', 'POST'])
+def signin():
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
@@ -328,7 +328,7 @@ def login():
         else:
             flash('Correo o contraseña incorrectos.')
             
-    return render_template('LogIn.html')
+    return render_template('signin.html')
 
 @app.route('/logout')
 @login_required
