@@ -451,6 +451,11 @@ def configuracion():
         
     return render_template('Settings.html')
 
+@app.route('/about')
+def sobre_nosotros():
+    # Renderiza la pagina informativa del proyecto y el equipo
+    return render_template('About.html')
+
 @app.route('/signup.html', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
@@ -510,6 +515,20 @@ def signin():
             flash('Correo o contraseña incorrectos.')
             
     return render_template('signin.html')
+
+@app.route('/auth', methods=['GET', 'POST'])
+def portal_autenticacion():
+    # Si el usuario ya tiene sesion iniciada, no tiene sentido que este aqui
+    if current_user.is_authenticated:
+        return redirect(url_for('inicio'))
+
+    if request.method == 'POST':
+        # Aquí entraría la logica futura de "Olvide mi contraseña" 
+        # Este CAMBIA si si hacemos esto
+        flash('La función de recuperación de cuenta está en construcción.')
+        return redirect(url_for('signin'))
+        
+    return render_template('Auth.html')
 
 @app.route('/logout')
 @login_required
