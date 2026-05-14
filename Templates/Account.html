@@ -1,26 +1,39 @@
 {% extends "NavBar.html" %}
 
+{% block title %}Book{% endblock %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="User">
         <div class="User-PFP">
-            <img src="">
+            <img src="/static/uploads/icons/Logo_pescaLibros.png">
         </div>
         <div class="User-Data">
-            <h2>Nombre</h2>
+            <h1>Nombre</h1>
             <div class="Data-Grid">
-                <div class="User-Foll">
-                    <p>Seguidores</p>
+                <div class="User-Foll-Loc">
+                    <p class="Foll">Seguidores</p>
+                    <div class="Loc">
+                        <div class="icon_loc">
+                            <img src="/static/uploads/icons/globo.png" alt="">
+                        </div>
+                         
+                        <p>CHIH, MEX</p>
+                    </div>
+        
                 </div>
-                <div class="User-Loc">
-                    <p>CHIH, MEX</p>
-                </div>
+
             </div>
             <div class="User-Des">
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
@@ -31,7 +44,7 @@
             <div class="User-Fav-Book">
                 <img src="">
             </div>
-            <p>Favoritos</p>
+            <p>Favoritos de</p>
         </div>
     </div>
 
@@ -39,23 +52,23 @@
         <h1>Libros que vende</h1>
         <div class="Sale-Books">
             <div class="Sale-Books-grid">
-                 <div class="Book">
-                    <img src>
+                <div class="Book">
+                    <img src="static/uploads/icons/Logo_pescaLibros.png" alt="">
                 </div>
                 <div class="Book">
-                    <img src>
+                    <img src="static/uploads/icons/Logo_pescaLibros.png" alt="">
                 </div>
                 <div class="Book">
-                    <img src>
+                    <img src="static/uploads/icons/Logo_pescaLibros.png" alt="">
                 </div>
                 <div class="Book">
-                    <img src>
+                    <img src="static/uploads/icons/Logo_pescaLibros.png" alt="">
                 </div>
-                <div class="Book">
-                    <img src>
-                </div>
+                
             </div>
         </div>
     </div>
 </body>
 </html>
+
+{% endblock %}

@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+}
+
 /*Navbar*/
 
 #Navbar {
@@ -38,4 +42,285 @@ a:hover {
     width: 100%;
     height: 100%;
     background-color: aqua;
+}
+
+
+
+/*Recibo*/
+#receipt_cont{
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle, #ffffff, #45c1be, #3a56a6);
+    align-content: center;
+}
+#recibo{
+    width: 25%;
+    height: auto;
+    margin: 50px auto;
+    padding: 25px;
+    border-radius: 25px;
+    background-color: rgba(245, 245, 245, 0.897);
+    box-shadow: rgba(0, 0, 0, 0.438) 13px 13px 10px;
+
+    text-align: center;
+    color: #2e2e2e;
+
+   font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.fecha_entrega_pedido{
+    color: #25a9a7;
+}
+
+.link_contacto a{
+    text-decoration:underline;
+}
+
+.btn_regresar{
+    width: 80%;
+    background-color: #3a56a6;
+    padding: 15px;
+    border-radius: 20px;
+    color: whitesmoke;
+    border: none;
+}
+.btn_regresar:hover{
+    transition:ease-in-out .4s;
+    scale: 1.1;
+}
+
+/*Libro*/
+
+#cont_book{
+    background-color: whitesmoke;
+    width: 100%;
+    height: 100vh;
+    align-content: center;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#contenedor_principal{
+    width: 55%;
+    height: auto;
+    margin: auto;
+    padding: 20px;
+
+    background-color: #d2d1d187;
+    border-radius: 25px;
+}
+
+
+#cont_book_part1{
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+#img_book{
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    align-content: center;
+}
+
+#info_principal_libro{
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+}
+
+#info{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-content: center;
+    padding: 15px;   
+}
+#info_basica{
+    text-align: end;
+    margin: 10px;
+}
+#info_precio{
+    text-align: start;
+    margin: 10px;
+}
+
+#btn_agregar{
+    text-align: center;
+    margin: 20px;
+}
+
+
+
+#cont_book_part2{
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+#info_secundaria_libro{
+    background-color: #b5b5b5;
+    margin: 10px;
+    padding: 20px;
+
+    border-radius: 25px;
+    color: whitesmoke;
+    text-align: center;
+}
+#datos{
+    text-align: start;
+    padding: 20px;
+}
+
+#comentarios{
+    height: 400px;
+    background-color: rgba(245, 245, 245, 0.669);
+    margin: 10px;
+    padding: 20px;
+    border-radius: 25px;
+    text-align: center;
+    overflow:scroll;
+}
+
+.plantilla_comentario{
+    width: 90%;
+    height: auto;
+    background-color: whitesmoke;
+    padding: 15px;
+    border-radius: 25px;
+    margin: 25px auto;
+}
+.comentador{
+    display: flex;  
+    align-content: center; 
+    padding: 2px;
+}
+.img_usuario{
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+}
+.img_usuario img{
+    width: 100%;
+}
+
+.comentador p{
+    align-content: center;
+    margin-left: 5px;
+}
+
+.texto_comentario{
+    text-align: start;
+    padding: 10px;
+}
+
+.coment
+{
+    border: none;
+    background-color: rgb(228, 228, 228);
+    border-radius: 25px;
+    padding: 15px;
+}
+
+/*Perfil usuario*/
+.User{
+    width: 60%;
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    padding: 20px;
+    margin: 50px auto;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.User-PFP{
+    text-align: center;
+    align-content: center;
+    padding: 10px;
+}
+
+.User-PFP img{
+    width: 100%;
+}
+
+.User-Data{
+    padding: 40px;
+}
+
+.User-Foll-Loc{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.Foll{
+    text-align: start;
+}
+
+.Loc{
+    width: 50%;
+    display:grid;
+    grid-template-columns: 20% 80%;
+    margin: auto;
+}
+.Loc p{
+    padding: 5px;
+}
+.icon_loc{
+    width: 100%;
+    align-content: center;
+}
+.icon_loc img{
+    width: 100%;
+}
+
+
+.User-Favs{
+    display: grid;
+    grid-template-rows: 80% 20%;
+    text-align: center;
+    padding: 20px;
+
+}
+
+.User-Fav-Book{
+    width: 60%;
+    background-color: #e3e3e3d0;
+    border-radius: 25px;
+    margin: auto;
+}
+
+.User-Sale{
+    width: 60%;
+    margin: auto;
+   padding: 20px;
+   font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.Sale-Books{
+    width: 85%;
+    background-color: #e3e3e3d0;
+    padding: 20px;
+    border-radius: 25px;
+    text-align: center;
+    margin: auto;
+}
+.Sale-Books-grid{
+    display:grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.Book{
+    width: 80%;
+    margin: auto;
+}
+
+.Book img{
+    width: 100%;
 }

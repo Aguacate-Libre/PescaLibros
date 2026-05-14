@@ -1,1 +1,91 @@
+{% extends "NavBar.html" %}
+
+{% block title %}Book{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <section id="cont_book">
+
+        <div id="contenedor_principal">
+            <div id="cont_book_part1">
+
+                <div id="img_book">
+                    <img src="static/uploads/icons/Logo_pescaLibros.png" alt="" width="50%">
+                </div>
+                
+
+                <div id="info_principal_libro">
+                    <div id="info">
+
+                        <div id="info_basica">
+                            <h2>titulo</h2>
+                            <p>autor</p>
+                            <p>editorial</p>
+                        </div>
+
+                        <div id="info_precio">
+                            <h2>precio</h2>
+                        </div>
+                        
+
+                    </div>
+                    <div id="btn_agregar">
+                        <input class="btn_regresar" type="button" value="+ Agregar al librero">
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div id="cont_book_part2">
+                <div id="info_secundaria_libro">
+                    <h3>Detalles del libro</h3>
+
+                    <div id="datos">
+                        <p>tipo</p>
+                        <p>es digital</p>
+                        <p>genero</p>
+                        <p>Año de publicacion</p>
+                        <p>Clasificacion</p>
+                        <p>Idioma</p>
+                    </div>
+                    
+                </div>
+
+                <div id="comentarios">
+                    <h2>Opiniones sobre este libro</h2>
+                    <div class="plantilla_comentario">
+                        <div class="comentador">
+                            <div class="img_usuario">
+                                <img src="static/uploads/icons/Logo_pescaLibros.png" alt="">
+                            </div>
+                            
+                            <p>nombre de usuario</p>
+                        </div>
+                        <div class="texto_comentario">
+                            <p> fecha / calificación</p>
+                            <p class="coment">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur tempora quam facilis officia, temporibus nisi sit ea sed esse reprehenderit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+
+{% endblock %}
 

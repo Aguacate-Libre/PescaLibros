@@ -1,1 +1,52 @@
 
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section id="receipt_cont">
+
+        <div id="recibo">
+            <h2>¡Tu compra fue exitosa!</h2>
+            <img src="static/uploads/icons/comprobado.png" alt="" width="15%">
+
+            <p>¡Revisa tu pedido!</p>
+            <div class="pedido_libros">
+                <p>ejemplo libro $200</p>
+                <p>ejemplo libro $200</p>
+                <p>ejemplo libro $200</p>
+            </div>
+
+            <p>Total $600</p>
+
+
+            <h2>Gracias por comprar en</h2>
+            <img src="static/uploads/icons/Logo_pescaLibros.png" alt="" width="25%">
+
+            <p>Tus libros llegan el</p>
+            <p class="fecha_entrega_pedido">Fecha no disponible<p>
+
+            <p>!Revisa tu correo! <br> Recibirás una copia de este comprobante</p>
+
+            <input class="btn_regresar" type="button" value="Salir">
+
+            <p class="link_contacto">¿Tienes dudas? <a href="/contact.html">¡Contáctanos!</a></p>
+            
+        </div>
+        
+    </section>
+</div>
+</body>
+</html>
+
+{% endblock %}
