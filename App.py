@@ -4,7 +4,8 @@ from dotenv import load_dotenv
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 # 1. ACTUALIZACIÓN DE IMPORTACIONES: Cambiamos Shelf por Librero y añadimos VentaUsuario
-from server.db import db, Usuario, Libro, Librero, Comentario, VentaUsuario 
+# OTRA ACTUALIZACION:  LAS RUTAS FALTANTES
+from server.db import db, Usuario, Libro, Librero, Comentario, VentaUsuario, Contacto, Pedido, DetallePedido, Favorito, Seguimiento
 from werkzeug.utils import secure_filename
 
 load_dotenv()
@@ -89,6 +90,84 @@ def gallery():
 
     catalogo = query.all()
     return render_template('gallery.html', libros=catalogo, busqueda=termino_busqueda)
+
+@app.route('/perfil')
+@login_required
+def mi_perfil():
+    # Obtener los libros favoritos del usuario
+    mis_favoritos = db.session.query(Libro).join(Favorito).filter(Favorito.id_usuario == current_user.id_usuario).all()
+    
+    # Obtener a los vendedores que este usuario sigue
+    siguiendo_a = db.session.query(Usuario).join(Seguimiento, Seguimiento.id_seguido == Usuario.id_usuario)\
+                  .filter(Seguimiento.id_seguidor == current_user.id_usuario).all()
+
+    # Obtener los libros que yo estoy vendiendo
+    mis_ventas = VentaUsuario.query.filter_by(id_usuario=current_user.id_usuario).all()
+
+    return render_template('Account.html', favoritos=mis_favoritos, siguiendo=siguiendo_a, mis_ventas=mis_ventas)
+
+@app.route('/store/<int:vendedor_id>')
+def ver_tienda(vendedor_id):
+    # Buscar al vendedor
+    vendedor = Usuario.query.get_or_404(vendedor_id)
+    
+    # Buscar los libros que tiene a la venta (que esten disponibles)
+    libros_venta = VentaUsuario.query.filter_by(id_usuario=vendedor_id, estado_venta='disponible').all()
+    
+    # Verificar si el usuario actual ya lo sigue 
+    lo_sigue = False
+    if current_user.is_authenticated:
+        lo_sigue = Seguimiento.query.filter_by(id_seguidor=current_user.id_usuario, id_seguido=vendedor_id).first() is not None
+
+    return render_template('store.html', vendedor=vendedor, libros=libros_venta, lo_sigue=lo_sigue)
+
+# Follower stuff
+@app.route('/seguir/<int:vendedor_id>', methods=['POST'])
+@login_required
+def toggle_seguir(vendedor_id):
+    if vendedor_id == current_user.id_usuario:
+        flash('No puedes seguirte a ti mismo.')
+        return redirect(request.referrer or url_for('inicio'))
+
+    vendedor = Usuario.query.get_or_404(vendedor_id)
+    relacion = Seguimiento.query.filter_by(id_seguidor=current_user.id_usuario, id_seguido=vendedor_id).first()
+
+    if relacion:
+        # Ya lo sigue -> Lo dejamos de seguir
+        db.session.delete(relacion)
+        vendedor.seguidores -= 1 # Restamos al contador
+        flash(f'Has dejado de seguir a {vendedor.nombre_usuario}.')
+    else:
+        # No lo sigue -> Lo empezamos a seguir
+        nuevo_seguimiento = Seguimiento(id_seguidor=current_user.id_usuario, id_seguido=vendedor_id)
+        db.session.add(nuevo_seguimiento)
+        vendedor.seguidores += 1 # Sumamos al contador
+        flash(f'Ahora sigues a {vendedor.nombre_usuario}.')
+
+    db.session.commit()
+    return redirect(request.referrer or url_for('ver_tienda', vendedor_id=vendedor_id))
+
+@app.route('/favorito/<int:libro_id>', methods=['POST'])
+@login_required
+def toggle_favorito(libro_id):
+    libro = Libro.query.get_or_404(libro_id)
+    favorito_existente = Favorito.query.filter_by(id_usuario=current_user.id_usuario, id_libro=libro_id).first()
+
+    if favorito_existente:
+        # Ya es favorito -> Lo quitamos
+        db.session.delete(favorito_existente)
+        if libro.favoritos > 0:
+            libro.favoritos -= 1
+        flash('Libro eliminado de tus favoritos.')
+    else:
+        # No es favorito -> Lo agregamos
+        nuevo_favorito = Favorito(id_usuario=current_user.id_usuario, id_libro=libro_id)
+        db.session.add(nuevo_favorito)
+        libro.favoritos += 1
+        flash('Libro agregado a tus favoritos.')
+
+    db.session.commit()
+    return redirect(request.referrer or url_for('gallery'))
 
 @app.route('/comprar/<int:libro_id>', methods=['POST'])
 @login_required
@@ -244,6 +323,133 @@ def eliminar_del_librero(libro_id):
         flash('El libro fue removido de tu librero.')
         
     return redirect(url_for('mi_librero'))
+
+@app.route('/checkout', methods=['POST'])
+@login_required
+def procesar_pago():
+    # Obtener los productos actuales en el carrito del usuario
+    items_carrito = Librero.query.filter_by(id_usuario=current_user.id_usuario, estado='activo').all()
+
+    if not items_carrito:
+        flash('Tu librero está vacío.')
+        return redirect(url_for('mi_librero'))
+
+    # Calcular el total y capturar datos del formulario de pago
+    total = sum(item.precio_unitario * item.cantidad for item in items_carrito)
+    metodo = request.form.get('metodo_pago') # tarjeta, paypal, etc.
+    direccion = request.form.get('direccion')
+
+    # Crear el registro del pedido
+    nuevo_pedido = Pedido(
+        id_usuario=current_user.id_usuario,
+        metodo_pago=metodo,
+        direccion_envio=direccion,
+        total_pedido=total,
+        estado_pedido='pendiente'
+    )
+    
+    try:
+        db.session.add(nuevo_pedido)
+        db.session.flush() # Obtenemos el id_pedido sin cerrar la transaccion
+
+        # Mover cada item del carrito a Detalle_Pedido y actualizar stock
+        for item in items_carrito:
+            # Se crea el detalle historico
+            detalle = DetallePedido(
+                id_pedido=nuevo_pedido.id_pedido,
+                id_libro=item.id_libro,
+                cantidad=item.cantidad,
+                precio_unitario=item.precio_unitario
+            )
+            db.session.add(detalle)
+
+            # Actualizar el inventario del libro
+            libro = Libro.query.get(item.id_libro)
+            if libro.stock >= item.cantidad:
+                libro.stock -= item.cantidad
+                libro.vendidos += item.cantidad
+            else:
+                db.session.rollback()
+                flash(f'Lo sentimos, ya no hay suficiente stock de "{libro.nombre_libro}".')
+                return redirect(url_for('mi_librero'))
+
+        # Limpiar el librero del usuario
+        Librero.query.filter_by(id_usuario=current_user.id_usuario).delete()
+
+        db.session.commit()
+        flash('¡Compra realizada con éxito!')
+        return redirect(url_for('ver_recibo', pedido_id=nuevo_pedido.id_pedido))
+
+    except Exception as e:
+        db.session.rollback()
+        print(f"Error en checkout: {e}")
+        flash('Hubo un problema al procesar tu pago.')
+        return redirect(url_for('mi_librero'))
+
+@app.route('/recibo/<int:pedido_id>')
+@login_required
+def ver_recibo(pedido_id):
+    # Buscar pedido, que pertenezca al usuario actual
+    pedido = Pedido.query.filter_by(id_pedido=pedido_id, id_usuario=current_user.id_usuario).first_or_404()
+    
+    # Obtenemos los detalles haciendo un JOIN con libros para tener los nombres
+    detalles = db.session.query(DetallePedido, Libro).\
+               join(Libro, DetallePedido.id_libro == Libro.id_libro).\
+               filter(DetallePedido.id_pedido == pedido_id).all()
+
+    return render_template('Receipt.html', pedido=pedido, detalles=detalles)
+
+@app.route('/contacto', methods=['GET', 'POST'])
+def contacto():
+    if request.method == 'POST':
+        # Capturar los datos del formulario HTML
+        correo = request.form.get('correo')
+        asunto = request.form.get('asunto')
+        tipo_problema = request.form.get('tipo_problema')
+        descripcion = request.form.get('descripcion')
+
+        # Validacion
+        if not asunto or not tipo_problema or not descripcion:
+            flash('Por favor, llena los campos obligatorios del formulario.')
+            return redirect(url_for('contacto'))
+
+        # Logica para el ID de usuario
+        # Si el usuario tiene sesion iniciada, guardamos su ID. Si es un visitante guest, guardamos None.
+        usuario_id = current_user.id_usuario if current_user.is_authenticated else None
+        
+        # Si el usuario está logueado pero no escribio correo, usamos el de su cuenta
+        if current_user.is_authenticated and not correo:
+            correo = current_user.correo
+
+        # Objeto para la base de datos
+        nuevo_ticket = Contacto(
+            id_usuario=usuario_id,
+            correo_contacto=correo,
+            asunto=asunto,
+            tipo_problema=tipo_problema,
+            descripcion_problema=descripcion
+            # 'estado' y 'fecha_envio' se llenan solos gracias a los valores default en db.py
+        )
+
+        # 5. Guardamos en MySQL/SQLite
+        db.session.add(nuevo_ticket)
+        db.session.commit()
+
+        flash('Tu mensaje ha sido enviado al equipo de soporte. Te contactaremos pronto.')
+        return redirect(url_for('inicio'))
+
+    # Si es GET, mostramos el diseño de Oscar
+    return render_template('Contact.html')
+
+@app.route('/configuracion', methods=['GET', 'POST'])
+@login_required
+def configuracion():
+    if request.method == 'POST':
+        # Aquí programarás la lógica para actualizar perfil o contraseña después
+        flash('Configuración actualizada.')
+        return redirect(url_for('mi_perfil'))
+        
+    return render_template('Settings.html')
 
 @app.route('/signup.html', methods=['GET', 'POST'])
 def signup():
