@@ -18,29 +18,39 @@
 
         <div id="recibo">
             <h2>¡Tu compra fue exitosa!</h2>
-            <img src="static/uploads/icons/comprobado.png" alt="" width="15%">
+            <img src="assets/icons/comprobado.png" alt="" width="15%">
 
             <p>¡Revisa tu pedido!</p>
             <div class="pedido_libros">
-                <p>ejemplo libro $200</p>
-                <p>ejemplo libro $200</p>
-                <p>ejemplo libro $200</p>
+                {% for detalle, libro in detalles %}
+                <p>
+                    {{ libro.nombre_libro }}
+                    -
+                    ${{ detalle.precio_unitario }}
+                </p>
+                {% endfor %}
             </div>
 
-            <p>Total $600</p>
+            <p>Total ${{ pedido.total_pedido }}</p>
 
 
             <h2>Gracias por comprar en</h2>
-            <img src="static/uploads/icons/Logo_pescaLibros.png" alt="" width="25%">
+            <img src="assets/icons/Logo_pescaLibros.png" alt="" width="25%">
 
             <p>Tus libros llegan el</p>
-            <p class="fecha_entrega_pedido">Fecha no disponible<p>
+            <p class="fecha_entrega_pedido">
+                {{ pedido.fecha_pedido }}
+            </p>
 
             <p>!Revisa tu correo! <br> Recibirás una copia de este comprobante</p>
 
-            <input class="btn_regresar" type="button" value="Salir">
+            <a href="{{ url_for('inicio') }}">
+                <button class="btn_regresar">
+                    Salir
+                </button>
+            </a>
 
-            <p class="link_contacto">¿Tienes dudas? <a href="/contact.html">¡Contáctanos!</a></p>
+            <p class="link_contacto">¿Tienes dudas? <a href="{{ url_for('contacto') }}"></p>
             
         </div>
         
