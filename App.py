@@ -260,7 +260,16 @@ def vender_libro():
 @app.route('/book.html/<int:libro_id>')
 def detalle_libro(libro_id):
     libro = Libro.query.get_or_404(libro_id)
-    return render_template('Book.html', libro=libro)
+    comentarios = Comentario.query.filter_by(id_libro=libro_id).all()
+    favorito = False
+
+    if current_user.is_authenticated:
+        favorito = Favorito.query.filter_by(
+            id_usuario=current_user.id_usuario,
+            id_libro=libro_id
+        ).first() is not None
+    return render_template('Book.html', libro=libro, comentarios=comentarios, favorito=favorito)
+
 
 @app.route('/comentar/<int:libro_id>', methods=['POST'])
 @login_required

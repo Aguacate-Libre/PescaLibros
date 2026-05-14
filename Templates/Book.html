@@ -23,7 +23,7 @@
             <div id="cont_book_part1">
 
                 <div id="img_book">
-                    <img src="static/uploads/icons/Logo_pescaLibros.png" alt="" width="50%">
+                    <img src="{{ libro.portada }}" alt="{{ libro.titulo }}" width="100%">
                 </div>
                 
 
@@ -31,19 +31,34 @@
                     <div id="info">
 
                         <div id="info_basica">
-                            <h2>titulo</h2>
-                            <p>autor</p>
-                            <p>editorial</p>
+                            <h2>{{ libro.nombre_libro }}</h2>
+                            <p>{{ libro.autor }}</p>
+                            <p>{{ libro.editorial }}</p>
                         </div>
 
                         <div id="info_precio">
-                            <h2>precio</h2>
+                            <h2>${{ libro.precio }}</h2>
                         </div>
                         
 
                     </div>
                     <div id="btn_agregar">
-                        <input class="btn_regresar" type="button" value="+ Agregar al librero">
+                        <form action="{{ url_for('toggle_favorito', libro_id=libro.id_libro) }}" method="POST">
+                            <button type="submit" class="btn_regresar">
+                                {% if favorito %}
+                                    ❤ Quitar de favoritos 
+                                {% else %}
+                                    ❤ Agregar a favoritos
+                                {% endif %}
+
+                            </button>
+                        </form>
+
+                        <a href="{{ url_for('agregar_al_librero', libro_id=libro.id_libro) }}">
+                            <button class="btn_regresar">
+                                + Agregar al librero
+                            </button>
+                        </a>
                     </div>
                     
                 </div>
@@ -54,32 +69,57 @@
                     <h3>Detalles del libro</h3>
 
                     <div id="datos">
-                        <p>tipo</p>
-                        <p>es digital</p>
-                        <p>genero</p>
-                        <p>Año de publicacion</p>
-                        <p>Clasificacion</p>
-                        <p>Idioma</p>
+                        <p>Género: {{ libro.genero_literario }}</p>
+
+                        {% if libro.tiene_pasta_blanda %}
+                        <p>Pasta blanda</p>
+                        {% endif %}
+
+                        {% if libro.tiene_pasta_dura %}
+                        <p>Pasta dura</p>
+                        {% endif %}
+
+                        {% if libro.tiene_digital %}
+                        <p>Disponible digitalmente</p>
+                        {% endif %}
+                        
+                        <p>Año: {{ libro.publicacion_year }}</p>
+                        <p>Categoría: {{ libro.categoria }}</p>
+                        <p>Clasificación: {{ libro.clasificacion }}</p>
+                        <p>Idioma: {{ libro.idioma }}</p>
                     </div>
+
                     
                 </div>
 
-                <div id="comentarios">
-                    <h2>Opiniones sobre este libro</h2>
-                    <div class="plantilla_comentario">
-                        <div class="comentador">
-                            <div class="img_usuario">
-                                <img src="static/uploads/icons/Logo_pescaLibros.png" alt="">
-                            </div>
-                            
-                            <p>nombre de usuario</p>
-                        </div>
-                        <div class="texto_comentario">
-                            <p> fecha / calificación</p>
-                            <p class="coment">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur tempora quam facilis officia, temporibus nisi sit ea sed esse reprehenderit.</p>
-                        </div>
-                    </div>
+                <div id="sinopsis">
+                    <h3>Sinopsis</h3>
+                    <p>{{ libro.sinopsis }}</p>
                 </div>
+
+                
+            </div>
+
+            <div id="comentarios">
+                <h2>Opiniones sobre este libro</h2>
+
+                {% for comentario in comentarios %}
+
+                <div class="plantilla_comentario">
+
+                    <div class="comentador">
+                        <p>{{ comentario.usuario.nombre_usuario }}</p>
+                    </div>
+
+                    <div class="texto_comentario">
+                        <p class="coment">
+                            {{ comentario.comentario }}
+                        </p>
+                    </div>
+
+                </div>
+
+                {% endfor %}
             </div>
         </div>
     </section>
