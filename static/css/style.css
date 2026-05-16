@@ -340,3 +340,108 @@ a:hover {
 .Book img{
     width: 100%;
 }
+
+/*Nosotros*/
+.Ab-Con{
+    background-color: #def6f5;
+    width: 100%;
+    height: 100%;
+
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.img_con{
+    width: 100%;
+    height: 500px;
+
+    background-image: 
+    linear-gradient(#3a57a69f, #45c1bf92),
+    url("/static/assets/img/libreria-interior-credit.jpg");
+
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    align-content: center;
+}
+
+
+.img_con img{
+    width: 15%;
+    margin: 20px;
+}
+
+.curva{
+    width: 110%;
+    height: 100px;
+
+    background: #def6f5;
+
+    border-radius: 80% 80% 0 0;
+    margin-left: -10%;
+    margin-top: -80px;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+.Who{
+    width: 70%;
+    height: auto;
+    
+    position: relative;
+    z-index: 3;
+
+    padding: 40px;
+    margin: 0 auto;
+
+}
+
+.Who:hover{
+    transition:ease-in-out .4s;
+    scale: 1.1;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.712) 4px 4px 10px;
+}
+
+.Mis-Vis{
+    width: 70%;
+    height: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+
+.Mision{
+    background-color:#45c1bf70;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.Mision:hover{
+    transition:ease-in-out .4s;
+    scale: 1.1;
+    rotate: 7deg;
+    box-shadow: rgba(0, 0, 0, 0.712) 4px 4px 10px;
+
+}
+
+.Vision{
+    background-color: #45c1bf70;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 25px;
+}
+
+.Vision:hover{
+    transition:ease-in-out .4s;
+    scale: 1.1;
+    rotate: -7deg;
+    box-shadow: rgba(0, 0, 0, 0.712) 4px 4px 10px;
+}
