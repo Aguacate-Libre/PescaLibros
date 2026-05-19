@@ -9,11 +9,28 @@ body{
     width: 100%;
     height: 50px;
     line-height: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Nav-Logo {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 210px;
+}
+
+#Brnd_Nm {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-size: x-large;
 }
 
 .Nav-Links {
     display: inline;
-    float: right;
+    float: left;
     line-height: 0px;
     text-align: center;
 }
@@ -24,27 +41,198 @@ ul{
 
 ul li {
     display: inline;
-    margin: 25px;
+    margin: 20px;
 }
 
 a {
     text-decoration: none;
     color: black;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
 }
 
 a:hover {
     color: #66D1C7;
+    border-bottom-style: solid;
+    height: 100px;
 }
 
 /*Index*/
 
-#container{
+#Main_Cnt{
     width: 100%;
     height: 100%;
-    background-color: aqua;
+    background-color: #F5F2EE;
+}
+
+.Ofertas {
+    height: 500px;
+    width: auto;
+}
+
+.Gll_Cnt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+
+.Fltr_Cnt {
+    background-color: #D9D9D9;
+    width: 15%;
+    height: auto;
+    border-radius: 16px;
+}
+
+.Fltr_Ttl {
+    padding: 10px;
+    margin-left: 5px;
+}
+
+#Fltr {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.Filtros {
+    height: auto;
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#fltr_bx {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    border-color: #9b9b9b;
+    border-bottom-style: solid;
+    border-width: 1px;
+}
+
+#fltr_bx_last {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+}
+
+#fltr_txt {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+#Gll_Bk_Sec {
+    width: 80%;
+    height: auto;
+    display: inline-grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 60px;
+    row-gap: 50px;
+}
+
+.Bk_Grd {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    object-fit: fill;
+}
+
+#gll_bk {
+    height: auto;
+    width: auto;
+}
+
+/*Gallery*/
+
+#Inv_Gll {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    margin-left: 50px;
+}
+
+.Gall_grid {
+    height: auto;
+    width: 100%;
+    display: inline-grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: auto;
+    row-gap: 50px;
+    padding: 150px;
+}
+
+.Usr_Bx {
+    background-color: #D9D9D9;
+    height: auto;
+    width: auto;
+    display: flex;
+    border-radius: 16px;
+    padding: 15px;
+}
+
+.User_Info {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.User_icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+#User_Name {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.User_Coll {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.Book_grid {
+    display: inline-grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.Usr_Bk_Grd {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    object-fit: fill;
+}
+
+.Usr_Bk {
+    height: auto;
+    width: auto;
+}
+
+.More {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
 }
 
 
+/*Contact*/
+
+/*SingIn*/
+
+/*SingnUp*/
+
+    /*font-family: "Poppins", sans-serif;*/
 
 /*Recibo*/
 #receipt_cont{

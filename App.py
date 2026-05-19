@@ -5,7 +5,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 # 1. ACTUALIZACIÓN DE IMPORTACIONES: Cambiamos Shelf por Librero y añadimos VentaUsuario
 # OTRA ACTUALIZACION:  LAS RUTAS FALTANTES
-from server.db import db, Usuario, Libro, Librero, Comentario, VentaUsuario, Contacto, Pedido, DetallePedido, Favorito, Seguimiento
+from server.Db import db, Usuario, Libro, Librero, Comentario, VentaUsuario, Contacto, Pedido, DetallePedido, Favorito, Seguimiento
 from werkzeug.utils import secure_filename
 
 load_dotenv()
