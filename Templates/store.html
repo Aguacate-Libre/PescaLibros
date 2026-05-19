@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="sellers-wrapper">
+
+        <!-- Encabezado -->
+        <div class="sellers-header">
+            <h2>Usuarios que venden <span class="book-title-highlight">"Cien Años de Soledad"</span></h2>
+            <span class="sellers-count">8 vendedores</span>
+        </div>
+
+        <!-- Lista de tarjetas -->
+        <div class="sellers-list">
+
+            <div class="seller-card">
+                <div class="seller-info">
+                    <img class="seller-avatar" src="https://i.pravatar.cc/150?img=1" alt="Avatar" />
+                    <div>
+                        <p class="seller-name">Carlos Mendoza</p>
+                        <span class="seller-badge">⭐ 4.8 · 132 ventas</span>
+                    </div>
+                </div>
+
+                <div class="seller-book">
+                    <img class="seller-book-cover" src="https://covers.openlibrary.org/b/id/8739161-M.jpg"
+                        alt="Portada" />
+                    <div class="seller-book-info">
+                        <p class="seller-book-title">Cien Años de Soledad</p>
+                        <p class="seller-book-author">Gabriel García Márquez</p>
+                        <p class="seller-book-year">📅 1967</p>
+                        <span class="book-type pasta-blanda">Pasta blanda</span>
+                        <p class="seller-book-details">Ejemplar en muy buen estado, sin subrayados. Edición de bolsillo
+                            Sudamericana 2010.</p>
+                    </div>
+                </div>
+
+                <div class="seller-footer">
+                    <p class="seller-price">$180.00</p>
+                    <button class="btn-save">Agregar al carrito</button>
+                </div>
+            </div>
+
+            <div class="seller-card">
+                <div class="seller-info">
+                    <img class="seller-avatar" src="https://i.pravatar.cc/150?img=5" alt="Avatar" />
+                    <div>
+                        <p class="seller-name">Laura Ríos</p>
+                        <span class="seller-badge">⭐ 4.5 · 87 ventas</span>
+                    </div>
+                </div>
+
+                <div class="seller-book">
+                    <img class="seller-book-cover" src="https://covers.openlibrary.org/b/id/8739161-M.jpg"
+                        alt="Portada" />
+                    <div class="seller-book-info">
+                        <p class="seller-book-title">Cien Años de Soledad</p>
+                        <p class="seller-book-author">Gabriel García Márquez</p>
+                        <p class="seller-book-year">📅 1967</p>
+                        <span class="book-type pasta-dura">Pasta dura</span>
+                        <p class="seller-book-details">Edición conmemorativa del 50 aniversario, tapa dura. Algunas
+                            páginas con doblez en esquinas.</p>
+                    </div>
+                </div>
+
+                <div class="seller-footer">
+                    <p class="seller-price">$340.00</p>
+                    <button class="btn-save">Agregar al carrito</button>
+                </div>
+            </div>
+
+            <div class="seller-card">
+                <div class="seller-info">
+                    <img class="seller-avatar" src="https://i.pravatar.cc/150?img=9" alt="Avatar" />
+                    <div>
+                        <p class="seller-name">Andrés Fuentes</p>
+                        <span class="seller-badge">⭐ 4.2 · 41 ventas</span>
+                    </div>
+                </div>
+
+                <div class="seller-book">
+                    <img class="seller-book-cover" src="https://covers.openlibrary.org/b/id/8739161-M.jpg"
+                        alt="Portada" />
+                    <div class="seller-book-info">
+                        <p class="seller-book-title">Cien Años de Soledad</p>
+                        <p class="seller-book-author">Gabriel García Márquez</p>
+                        <p class="seller-book-year">📅 1967</p>
+                        <span class="book-type digital">Digital</span>
+                        <p class="seller-book-details">Archivo PDF de alta calidad, compatible con cualquier lector.
+                            Envío inmediato por correo.</p>
+                    </div>
+                </div>
+
+                <div class="seller-footer">
+                    <p class="seller-price">$95.00</p>
+                    <button class="btn-save">Agregar al carrito</button>
+                </div>
+            </div>
+
+            <div class="seller-card">
+                <div class="seller-info">
+                    <img class="seller-avatar" src="https://i.pravatar.cc/150?img=12" alt="Avatar" />
+                    <div>
+                        <p class="seller-name">Sofía Guerrero</p>
+                        <span class="seller-badge">⭐ 5.0 · 210 ventas</span>
+                    </div>
+                </div>
+
+                <div class="seller-book">
+                    <img class="seller-book-cover" src="https://covers.openlibrary.org/b/id/8739161-M.jpg"
+                        alt="Portada" />
+                    <div class="seller-book-info">
+                        <p class="seller-book-title">Cien Años de Soledad</p>
+                        <p class="seller-book-author">Gabriel García Márquez</p>
+                        <p class="seller-book-year">📅 1967</p>
+                        <span class="book-type pasta-blanda">Pasta blanda</span>
+                        <p class="seller-book-details">Nuevo, sin uso. Comprado por error, mismo que se vende en tienda.
+                            Factura disponible.</p>
+                    </div>
+                </div>
+
+                <div class="seller-footer">
+                    <p class="seller-price">$260.00</p>
+                    <button class="btn-save">Agregar al carrito</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="../js/script3.js"></script>
+
+</body>
+
+</html>

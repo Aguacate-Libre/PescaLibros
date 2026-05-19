@@ -1,13 +1,179 @@
-{% extends "NavBar.html" %}
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Document</title>
 </head>
+
 <body>
-    
+    <div class="cart-wrapper">
+
+  <!-- ═══ BLOQUE 1: CARRITO ═══ -->
+  <section class="cart-block">
+    <div class="block-header">
+      <h2>Mi Carrito</h2>
+      <span class="item-count" id="item-count">3 artículos</span>
+    </div>
+
+    <!-- Estado vacío (oculto si hay items) -->
+    <div class="cart-empty" id="cart-empty" style="display:none;">
+      <div class="empty-icon">📚</div>
+      <p>Tu carrito está vacío.</p>
+      <span>Agrega libros para comenzar tu pedido.</span>
+    </div>
+
+    <!-- Lista de libros -->
+    <ul class="book-list" id="book-list">
+
+      <li class="book-item" data-id="1">
+        <img class="book-cover" src="https://covers.openlibrary.org/b/id/8739161-M.jpg" alt="Portada" />
+        <div class="book-info">
+          <h4 class="book-title">Cien Años de Soledad</h4>
+          <p class="book-author">Gabriel García Márquez</p>
+          <span class="book-type pasta-blanda">Pasta blanda</span>
+        </div>
+        <div class="book-controls">
+          <p class="book-price">$299.00</p>
+          <div class="qty-control">
+            <button class="qty-btn minus" data-id="1">−</button>
+            <span class="qty-value" id="qty-1">1</span>
+            <button class="qty-btn plus" data-id="1">+</button>
+          </div>
+          <button class="btn-remove" data-id="1">Eliminar</button>
+        </div>
+      </li>
+
+      <li class="book-item" data-id="2">
+        <img class="book-cover" src="https://covers.openlibrary.org/b/id/12891854-M.jpg" alt="Portada" />
+        <div class="book-info">
+          <h4 class="book-title">El Nombre del Viento</h4>
+          <p class="book-author">Patrick Rothfuss</p>
+          <span class="book-type pasta-dura">Pasta dura</span>
+        </div>
+        <div class="book-controls">
+          <p class="book-price">$450.00</p>
+          <div class="qty-control">
+            <button class="qty-btn minus" data-id="2">−</button>
+            <span class="qty-value" id="qty-2">2</span>
+            <button class="qty-btn plus" data-id="2">+</button>
+          </div>
+          <button class="btn-remove" data-id="2">Eliminar</button>
+        </div>
+      </li>
+
+      <li class="book-item" data-id="3">
+        <img class="book-cover" src="https://covers.openlibrary.org/b/id/10909258-M.jpg" alt="Portada" />
+        <div class="book-info">
+          <h4 class="book-title">Sapiens</h4>
+          <p class="book-author">Yuval Noah Harari</p>
+          <span class="book-type digital">Digital</span>
+        </div>
+        <div class="book-controls">
+          <p class="book-price">$149.00</p>
+          <div class="qty-control">
+            <button class="qty-btn minus" data-id="3">−</button>
+            <span class="qty-value" id="qty-3">1</span>
+            <button class="qty-btn plus" data-id="3">+</button>
+          </div>
+          <button class="btn-remove" data-id="3">Eliminar</button>
+        </div>
+      </li>
+
+    </ul>
+
+    <!-- Total -->
+    <div class="cart-footer">
+      <div class="subtotal-row">
+        <span>Subtotal</span>
+        <span id="subtotal">$1,047.00</span>
+      </div>
+      <div class="subtotal-row">
+        <span>Envío</span>
+        <span id="shipping-cost">$80.00</span>
+      </div>
+      <div class="divider"></div>
+      <div class="total-row">
+        <span>Total</span>
+        <span id="total">$1,127.00</span>
+      </div>
+      <button class="btn-save" style="width:100%; margin-top:20px;">Proceder al pago</button>
+    </div>
+  </section>
+
+  <!-- ═══ BLOQUE 2: SEGUIMIENTO DE ENVÍO ═══ -->
+  <section class="cart-block">
+    <div class="block-header">
+      <h2>Seguimiento de Envío</h2>
+      <span class="item-count">Pedido activo</span>
+    </div>
+
+    <div class="shipping-card">
+      <div class="shipping-meta">
+        <div class="meta-item">
+          <label>ID de envío</label>
+          <strong>#ENV-20482</strong>
+        </div>
+        <div class="meta-item">
+          <label>Tiempo de entrega</label>
+          <strong>3–5 días hábiles</strong>
+        </div>
+        <div class="meta-item">
+          <label>Fecha estimada</label>
+          <strong>19–21 de mayo, 2026</strong>
+        </div>
+        <div class="meta-item">
+          <label>Transportista</label>
+          <strong>Correos de México</strong>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h4 class="section-label">Detalles del pedido</h4>
+      <ul class="order-detail-list">
+        <li>📖 Cien Años de Soledad × 1 — <span>$299.00</span></li>
+        <li>📖 El Nombre del Viento × 2 — <span>$900.00</span></li>
+        <li>💻 Sapiens (Digital) × 1 — <span>$149.00</span></li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <h4 class="section-label">Estado del envío</h4>
+      <div class="progress-track">
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progress-fill" style="width: 50%;"></div>
+        </div>
+        <div class="progress-steps">
+          <div class="step done">
+            <div class="step-dot"></div>
+            <span>Confirmado</span>
+          </div>
+          <div class="step done">
+            <div class="step-dot"></div>
+            <span>Preparando</span>
+          </div>
+          <div class="step active">
+            <div class="step-dot"></div>
+            <span>En camino</span>
+          </div>
+          <div class="step">
+            <div class="step-dot"></div>
+            <span>Entregado</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="shipping-note">📍 Última actualización: Ciudad de México → Monterrey · Hace 2 horas</p>
+    </div>
+  </section>
+
+</div>
+
+    <script src="../js/script2.js"></script>
+
 </body>
+
 </html>

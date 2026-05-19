@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Pesca Libros</title>
 </head>
 <body>
+ 
+    <!-- ===================== NAVBAR ===================== -->
     <nav id="Navbar">
         <div class="Nav-Logo">
             <img src="/static/assets/icons/Logo_pescaLibros.png" height="30px" width="30px">
@@ -13,20 +17,29 @@
         </div>
         <div class="Nav-Links">
             <ul>
-                <li></li>
-                <li><a href="/" id="Nav_Lnk">Inicio</a></li>
-                <li><a href="/gallery.html" id="Nav_Lnk">Galeria</a></li>
-                <li><a href="/about" id="Nav_Lnk">Nosotros</a></li>
-                <li><a href="/contacto" id="Nav_Lnk">Contacto</a></li>
-                <li><a href="/shelf.html" id="Nav_Lnk">Librero</a></li>
-                <li><a href="/signin.html" id="Nav_Lnk">Iniciar Sesión</a></li>
-                <li><a href="/signup.html" id="Nav_Lnk">Registrarse</a></li>
+                {% if session.logged_in %}
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/gallery.html">Galeria</a></li>
+                <li><a href="/about">Nosotros</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/shelf.html">Librero</a></li>
+                <li><a href="/account.html">Mi Cuenta</a></li>
+                {% else %}
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/gallery.html">Galeria</a></li>
+                <li><a href="/about">Nosotros</a></li>
+                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/signin.html">Iniciar Sesión</a></li>
+                <li><a href="/signup.html">Registrarse</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
-
+    <!-- ================================================= -->
+ 
     <div class="content">
         {% block content %}{% endblock %}
     </div>
+ 
 </body>
 </html>

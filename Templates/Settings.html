@@ -1,1 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="settings-wrapper">
+        <aside class="settings-nav">
+            <h2 class="settings-title">Mi Cuenta</h2>
+            <ul>
+                <li class="nav-item active" data-section="perfil">Perfil</li>
+                <li class="nav-item" data-section="seguridad">Seguridad</li>
+                <li class="nav-item" data-section="notificaciones">Notificaciones</li>
+                <li class="nav-item" data-section="privacidad">Privacidad</li>
+                <li class="nav-item" data-section="apariencia">Apariencia</li>
+                <li class="nav-item danger" data-section="cuenta">Cuenta</li>
+            </ul>
+        </aside>
+
+        <main class="settings-content">
+
+            <!-- PERFIL -->
+            <section class="settings-section active" id="perfil">
+                <h3>Información de Perfil</h3>
+                <div class="field-group">
+                    <label>Nombre completo</label>
+                    <input type="text" placeholder="Tu nombre" value="María López" />
+                </div>
+                <div class="field-group">
+                    <label>Nombre de usuario</label>
+                    <input type="text" placeholder="@usuario" value="@marialopez" />
+                </div>
+                <div class="field-group">
+                    <label>Correo electrónico</label>
+                    <input type="email" placeholder="correo@ejemplo.com" value="maria@ejemplo.com" />
+                </div>
+                <div class="field-group">
+                    <label>Biografía</label>
+                    <textarea
+                        placeholder="Cuéntanos algo sobre ti...">Diseñadora UX apasionada por el detalle.</textarea>
+                </div>
+                <div class="field-group">
+                    <label>Idioma</label>
+                    <select>
+                        <option selected>Español</option>
+                        <option>English</option>
+                        <option>Français</option>
+                    </select>
+                </div>
+                <button class="btn-save">Guardar cambios</button>
+            </section>
+
+            <!-- SEGURIDAD -->
+            <section class="settings-section" id="seguridad">
+                <h3>Seguridad</h3>
+                <div class="field-group">
+                    <label>Contraseña actual</label>
+                    <input type="password" placeholder="••••••••" />
+                </div>
+                <div class="field-group">
+                    <label>Nueva contraseña</label>
+                    <input type="password" placeholder="••••••••" />
+                </div>
+                <div class="field-group">
+                    <label>Confirmar contraseña</label>
+                    <input type="password" placeholder="••••••••" />
+                </div>
+                <button class="btn-save">Actualizar contraseña</button>
+
+                <div class="divider"></div>
+                <h4>Autenticación en dos pasos</h4>
+                <div class="toggle-row">
+                    <span>Activar 2FA por app autenticadora</span>
+                    <label class="toggle">
+                        <input type="checkbox" />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-row">
+                    <span>Activar 2FA por SMS</span>
+                    <label class="toggle">
+                        <input type="checkbox" checked />
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="divider"></div>
+                <h4>Sesiones activas</h4>
+                <div class="session-item">
+                    <span>🖥 Chrome · Windows · Ciudad de México</span>
+                    <span class="badge active">Actual</span>
+                </div>
+                <div class="session-item">
+                    <span>📱 Safari · iPhone · Monterrey</span>
+                    <button class="btn-link">Cerrar sesión</button>
+                </div>
+            </section>
+
+            <!-- NOTIFICACIONES -->
+            <section class="settings-section" id="notificaciones">
+                <h3>Notificaciones</h3>
+                <h4>Por correo electrónico</h4>
+                <div class="toggle-row">
+                    <span>Actualizaciones de cuenta</span>
+                    <label class="toggle"><input type="checkbox" checked /><span class="slider"></span></label>
+                </div>
+                <div class="toggle-row">
+                    <span>Boletín semanal</span>
+                    <label class="toggle"><input type="checkbox" /><span class="slider"></span></label>
+                </div>
+                <div class="toggle-row">
+                    <span>Alertas de seguridad</span>
+                    <label class="toggle"><input type="checkbox" checked /><span class="slider"></span></label>
+                </div>
+
+                <div class="divider"></div>
+                <h4>Notificaciones push</h4>
+                <div class="toggle-row">
+                    <span>Mensajes directos</span>
+                    <label class="toggle"><input type="checkbox" checked /><span class="slider"></span></label>
+                </div>
+                <div class="toggle-row">
+                    <span>Menciones y comentarios</span>
+                    <label class="toggle"><input type="checkbox" checked /><span class="slider"></span></label>
+                </div>
+                <div class="toggle-row">
+                    <span>Novedades y promociones</span>
+                    <label class="toggle"><input type="checkbox" /><span class="slider"></span></label>
+                </div>
+                <button class="btn-save">Guardar preferencias</button>
+            </section>
+
+            <!-- PRIVACIDAD -->
+            <section class="settings-section" id="privacidad">
+                <h3>Privacidad</h3>
+                <div class="field-group">
+                    <label>Visibilidad del perfil</label>
+                    <select>
+                        <option>Público</option>
+                        <option selected>Solo amigos</option>
+                        <option>Privado</option>
+                    </select>
+                </div>
+                <div class="toggle-row">
+                    <span>Mostrar estado en línea</span>
+                    <label class="toggle"><input type="checkbox" checked /><span class="slider"></span></label>
+                </div>
+                <div class="toggle-row">
+                    <span>Permitir que me busquen por correo</span>
+                    <label class="toggle"><input type="checkbox" /><span class="slider"></span></label>
+                </div>
+                <div class="toggle-row">
+                    <span>Compartir datos de uso para mejorar el servicio</span>
+                    <label class="toggle"><input type="checkbox" checked /><span class="slider"></span></label>
+                </div>
+
+                <div class="divider"></div>
+                <h4>Datos personales</h4>
+                <div class="action-row">
+                    <span>Descargar mis datos</span>
+                    <button class="btn-outline">Solicitar descarga</button>
+                </div>
+                <button class="btn-save">Guardar preferencias</button>
+            </section>
+
+            <!-- APARIENCIA -->
+            <section class="settings-section" id="apariencia">
+                <h3>Apariencia</h3>
+                <div class="field-group">
+                    <label>Tema</label>
+                    <div class="theme-options">
+                        <label class="theme-btn">
+                            <input type="radio" name="tema" value="claro" checked />
+                            <span>☀️ Claro</span>
+                        </label>
+                        <label class="theme-btn">
+                            <input type="radio" name="tema" value="oscuro" />
+                            <span>🌙 Oscuro</span>
+                        </label>
+                        <label class="theme-btn">
+                            <input type="radio" name="tema" value="sistema" />
+                            <span>💻 Sistema</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <label>Tamaño de fuente</label>
+                    <select>
+                        <option>Pequeño</option>
+                        <option selected>Mediano</option>
+                        <option>Grande</option>
+                    </select>
+                </div>
+                <div class="toggle-row">
+                    <span>Reducir animaciones</span>
+                    <label class="toggle"><input type="checkbox" /><span class="slider"></span></label>
+                </div>
+                <button class="btn-save">Guardar preferencias</button>
+            </section>
+
+            <!-- CUENTA -->
+            <section class="settings-section" id="cuenta">
+                <h3>Gestión de cuenta</h3>
+                <div class="action-row">
+                    <div>
+                        <strong>Exportar datos</strong>
+                        <p>Descarga toda la información asociada a tu cuenta.</p>
+                    </div>
+                    <button class="btn-outline">Exportar</button>
+                </div>
+                <div class="action-row">
+                    <div>
+                        <strong>Desactivar cuenta</strong>
+                        <p>Tu cuenta quedará oculta pero podrás reactivarla.</p>
+                    </div>
+                    <button class="btn-outline">Desactivar</button>
+                </div>
+                <div class="divider"></div>
+                <div class="action-row danger-zone">
+                    <div>
+                        <strong>Eliminar cuenta</strong>
+                        <p>Esta acción es permanente e irreversible.</p>
+                    </div>
+                    <button class="btn-danger">Eliminar cuenta</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
