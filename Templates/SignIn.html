@@ -11,50 +11,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-    <div id="Cont-Sess">
+<body id="Log_Body">
+    <div class="Ssn_Center"> 
+        <div id="Ssn_Cnt">
 
-        <div class="Logo-Sess">
-            <img src="/static/assets/icons/Logo_pescaLibros.png" alt="Logo" height="100px" width="100px">
+            <div class="Logo_Sess">
+                <img src="/static/assets/icons/Logo_pescaLibros.png" alt="Logo" height="100px" width="100px">
+            </div>
+
+            <p class="Log_Ttx">Inicia Sesion</p>
+
+            <form>
+
+                <div class="Log_Email">
+                    <p class="Log_txt">Correro electronico</p>
+                    <label for="email"></label>
+                    <input type="email"
+                    id="email"
+                    name="email"
+                    required
+                    autofocus>
+                </div>
+
+                
+                <div>
+                    <p class="Log_txt">Contraseña</p>
+                    <label for="password"></label>
+                    <input type="password"
+                    id="password"
+                    name="password"
+                    required
+                    autofocus>
+                </div>
+
+                <div>
+                    <a href="/forgot-password" id="Log_Lnk">olvide mi contraseña</a>
+                </div>
+
+                <div class="Lwr_Log">
+
+                    <div class="Log_Btn">
+                        <input class="submit" type="submit" value="Ingresar">
+                    </div>
+
+                    <div class="Reg_Lnk">
+                        <p id="No_Acc_Txt">No tienees cuenta? </p>
+                        <a href="/signup.html" id="Log_Lnk"> Registrate</a>
+                    </div>
+
+                </div>
+
+            </form>
         </div>
-
-        <p>Inicia Sesion</p>
-
-        <form>
-
-            <div class="form-group">
-                <label for="email">Correro electronico</label>
-                <input type="email"
-                id="email"
-                name="email"
-                required
-                autofocus>
-            </div>
-
-            
-            <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password"
-                id="password"
-                name="password"
-                required
-                autofocus>
-            </div>
-
-            <div class="form-links">
-                <a href="/forgot-password">olvide mi contraseña</a>
-            </div>
-
-            <div class="form-action">
-                <input class="submit" type="submit" value="Ingresar">
-            </div>
-
-            <div class="form-links">
-                <p>No tienees cuenta? </p>
-                <a href="/signup.html">Registrate</a>
-            </div>
-
-        </form>
     </div>
 </body>
 </html>

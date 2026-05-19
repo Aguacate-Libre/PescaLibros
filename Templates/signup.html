@@ -11,58 +11,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-    <div id="Cont-Sess">
+<body id="Log_Body">
+    <div class="Ssn_Center">
+        <div id="Ssn_Cnt">
 
-        <div class="Logo-Sess">
-            <img src="/static/assets/icons/Logo_pescaLibros.png" alt="Logo" height="100px" width="100px">
+            <div class="Logo-Sess">
+                <img src="/static/assets/icons/Logo_pescaLibros.png" alt="Logo" height="100px" width="100px">
+            </div>
+
+            <p class="Log_Ttx">Registrate</p>
+
+            <form>
+
+                <div class="form-group">
+                    <p class="Log_txt">Nombre de usuario</p>
+                    <label for="name"></label>
+                    <input type="name"
+                    id="name"
+                    name="name"
+                    required
+                    autofocus>
+                </div>
+
+                <div class="form-group">
+                    <p class="Log_txt">Fecha de nacimiento</p>
+                    <label for="date"></label>
+                    <input type="date"
+                    id="date"
+                    name="date"
+                    required
+                    autofocus>
+                </div>
+
+                <div class="form-group">
+                    <p class="Log_txt">Correro electronico</p>
+                    <label for="email"></label>
+                    <input type="email"
+                    id="email"
+                    name="email"
+                    required
+                    autofocus>
+                </div>
+
+                
+                <div class="form-group">
+                    <p class="Log_txt">Contraseña</p>
+                    <label for="password"></label>
+                    <input type="password"
+                    id="password"
+                    name="password"
+                    required
+                    autofocus>
+                </div>
+
+                <div class="Lwr_Log">
+
+                    <div class="Log_Btn">
+                        <input class="submit" type="submit" value="Ingresar">
+                    </div>
+
+                    <div class="Reg_Lnk">
+                        <p id="No_Acc_Txt">Tienes cuenta? </p>
+                        <a href="/signin.html" id="Log_Lnk"> Iniciar Sesion</a>
+                    </div>
+                    
+                </div>
+            </form>
         </div>
-
-        <p>Registrate</p>
-
-        <form>
-
-            <div class="form-group">
-                <label for="name">Nombre de usuario</label>
-                <input type="name"
-                id="name"
-                name="name"
-                required
-                autofocus>
-            </div>
-
-            <div class="form-group">
-                <label for="date">Fecha de nacimiento</label>
-                <input type="date"
-                id="date"
-                name="date"
-                required
-                autofocus>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Correro electronico</label>
-                <input type="email"
-                id="email"
-                name="email"
-                required
-                autofocus>
-            </div>
-
-            
-            <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password"
-                id="password"
-                name="password"
-                required
-                autofocus>
-            </div>
-
-            <div class="form-action">
-                <input class="submit" type="submit" value="Ingresar">
-            </div>
-        </form>
     </div>
 </body>
 </html>

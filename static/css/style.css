@@ -44,7 +44,7 @@ ul li {
     margin: 20px;
 }
 
-a {
+#Nav_Lnk {
     text-decoration: none;
     color: black;
     font-family: "Poppins", sans-serif;
@@ -52,7 +52,7 @@ a {
     font-size: 16px;
 }
 
-a:hover {
+#Nav_Lnk:hover {
     color: #66D1C7;
     border-bottom-style: solid;
     height: 100px;
@@ -165,15 +165,18 @@ a:hover {
     column-gap: auto;
     row-gap: 50px;
     padding: 150px;
+    
 }
 
 .Usr_Bx {
     background-color: #D9D9D9;
     height: auto;
     width: auto;
+    max-width: fit-content;
     display: flex;
     border-radius: 16px;
     padding: 15px;
+    align-items: center;
 }
 
 .User_Info {
@@ -228,9 +231,135 @@ a:hover {
 
 /*Contact*/
 
+
+
 /*SingIn*/
 
+#Log_Body {
+    background-image: url('https://i0.wp.com/www.3wallpapers.fr/wp-content/uploads/2019/06/iPhone-wallpapers-northern-lights-skagsanden-beach.png?fit=1242%2C2688&ssl=1://i.pinimg.com/736x/c3/c6/9f/c3c69f8fa43806ed6aab49a87f592fc6.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.Log_Ttx {
+    color: #66D1C7;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.Ssn_Center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+#Ssn_Cnt {
+    max-width: fit-content;
+    max-height: fit-content;
+    background-color: #F5F2EE;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+}
+
+.Log_txt {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-size: 12px;
+}
+
+#Log_Lnk {
+    text-decoration: none;
+    color: #66D1C7;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    text-decoration: none;
+    
+}
+
+input[type=email] {
+    width: 100%;
+    padding: 10px;
+    background-color: #D9D9D9;
+    border-style: none;
+    border-radius: 10px;
+}
+
+input[type=password] {
+    width: 100%;
+    padding: 10px;
+    background-color: #D9D9D9;
+    border-style: none;
+    border-radius: 10px;
+}
+
+input[type=submit] {
+    background-color: #66D1C7;
+    border-style: none;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    height: 30px;
+    width: 100px;
+    border-radius: 10px;
+    margin: 10px;
+    
+}
+
+input:focus {
+    outline: none;
+}
+
+#No_Acc_Txt {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    text-decoration: none;
+}
+
+.Reg_Lnk {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Lwr_Log {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
 /*SingnUp*/
+
+input[type=name] {
+    width: 100%;
+    padding: 10px;
+    background-color: #D9D9D9;
+    border-style: none;
+    border-radius: 10px;
+}
+
+input[type=date] {
+    width: 100%;
+    padding: 10px;
+    background-color: #D9D9D9;
+    border-style: none;
+    border-radius: 10px;
+}
 
     /*font-family: "Poppins", sans-serif;*/
 
