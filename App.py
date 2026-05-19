@@ -7,6 +7,7 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 # OTRA ACTUALIZACION:  LAS RUTAS FALTANTES
 from server.Db import db, Usuario, Libro, Librero, Comentario, VentaUsuario, Contacto, Pedido, DetallePedido, Favorito, Seguimiento
 from werkzeug.utils import secure_filename
+from datetime import date
 
 load_dotenv()
 
@@ -472,8 +473,8 @@ def signup():
         nombre_usuario = request.form.get('nombre_usuario') 
         email = request.form.get('email')
         password = request.form.get('password')
-        edad = request.form.get('edad')
-        
+        DOB = request.form.get('fecha_registro')
+        edad = date.year - DOB
         if not nombre_usuario or not email or not password or not edad:
             flash('Por favor, llena todos los campos.')
             return redirect(url_for('signup'))
