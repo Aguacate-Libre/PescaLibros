@@ -62,7 +62,7 @@ ul li {
 
 #Main_Cnt{
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-color: #F5F2EE;
 }
 
@@ -231,7 +231,132 @@ ul li {
 
 /*Contact*/
 
+#Cnt_Body {
+    background-image: url('https://wallpapercave.com/wp/wp14349291.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 
+.Cont_Con {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.Form_Contact {
+    max-width: max-content;
+    max-height: fit-content;
+    background:  rgba(245, 245, 245, 0.126);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+}
+
+.Cont_Btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Cont_Ttl {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+}
+
+.Cont_Srv {
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+}
+
+input[type=text] {
+    background:  rgba(245, 245, 245, 0);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+input[type=text]::placeholder {
+    text-align: center;
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+select {
+    background:  rgba(245, 245, 245, 0);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    appearance: base-select;
+    text-align: center;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+    margin-top: 30px;
+}
+
+select::picker(select) {
+    appearance: base-select;
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+textarea {
+    background:  rgba(245, 245, 245, 0);
+    backdrop-filter: blur(10px);
+    padding: 10px;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+    height: 300px;
+    margin-top: 30px;
+}
+
+textarea::placeholder {
+    text-align: center;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    line-height: 300px;
+}
+button {
+    background:  rgba(245, 245, 245, 0);
+    backdrop-filter: blur(10px);
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    margin-top: 30px;
+    font-size: 16px;
+}
 
 /*SingIn*/
 

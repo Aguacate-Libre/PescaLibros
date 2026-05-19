@@ -11,22 +11,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-    <div class="Cont-Con">
-        <h1>Si tienes problemas o necesitas ayuda, contactanos por este medio.</h1>
-        <p>Le contactaremos en la brevedad posible.</p>
+<body id="Cnt_Body">
+    <div class="Cont_Con">
+        <h1 class="Cont_Ttl">Si tienes problemas o necesitas ayuda, contactanos por este medio.</h1>
+        <p class="Cont_Srv">Le contactaremos en la brevedad posible.</p>
 
-        <div class="Form-Contact">
+        <div class="Form_Contact">
             <form action="/contact" method="post">
+
                 <input type="text" name="subject" placeholder="Asunto" required>
+
                 <select id="problem" name="problem">
                     <option value="" required>Que clase de problema tienes?</option>
                     <option value="Buy">Problema con una compra</option>
                     <option value="Product">Problema con un producto</option>
                     <option value="Other">Otro problema</option>
                 </select>
+
                 <textarea name="message" placeholder="Explica tu problema" required></textarea>
-                <button type="submit">Enviar</button>
+                
+                <div class="Cont_Btn">
+                    <button type="submit">Enviar</button>  
+                </div>
+
+
             </form>
         </div>
     </div>
