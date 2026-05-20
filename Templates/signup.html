@@ -12,73 +12,59 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body id="Log_Body">
-    <div class="Ssn_Center">
-        <div id="Ssn_Cnt">
+   <div class="Ssn_Center">
+    <div id="Ssn_Cnt">
+        <div class="Logo-Sess">
+            <img src="{{ url_for('static', filename='assets/icons/Logo_pescaLibros.png') }}" alt="Logo" height="100px" width="100px">
+        </div>
 
-            <div class="Logo-Sess">
-                <img src="/static/assets/icons/Logo_pescaLibros.png" alt="Logo" height="100px" width="100px">
+        <p class="Log_Ttx">Regístrate</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert-container" style="color: red; margin-bottom: 15px; text-align: center;">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form action="/signup.html" method="POST">
+
+            <div class="form-group">
+                <p class="Log_txt">Nombre de usuario</p>
+                <input type="text" id="nombre_usuario" name="nombre_usuario" required autofocus>
             </div>
 
-            <p class="Log_Ttx">Registrate</p>
+            <div class="form-group">
+                <p class="Log_txt">Fecha de nacimiento</p>
+                <input type="date" id="fecha_registro" name="fecha_registro" required>
+            </div>
 
-            <form>
+            <div class="form-group">
+                <p class="Log_txt">Correo electrónico</p>
+                <input type="email" id="email" name="email" required>
+            </div>
 
-                <div class="form-group">
-                    <p class="Log_txt">Nombre de usuario</p>
-                    <label for="name"></label>
-                    <input type="name"
-                    id="nombre_usuario"
-                    name="name"
-                    required
-                    autofocus>
+            <div class="form-group">
+                <p class="Log_txt">Contraseña</p>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="Lwr_Log">
+                <div class="Log_Btn">
+                    <input class="submit" type="submit" value="Ingresar">
                 </div>
 
-                <div class="form-group">
-                    <p class="Log_txt">Fecha de nacimiento</p>
-                    <label for="date"></label>
-                    <input type="date"
-                    id="fecha_registro"
-                    name="date"
-                    required
-                    autofocus>
+                <div class="Reg_Lnk">
+                    <p id="No_Acc_Txt">¿Tienes cuenta? </p>
+                    <a href="/signin.html" id="Log_Lnk"> Iniciar Sesión</a>
                 </div>
-
-                <div class="form-group">
-                    <p class="Log_txt">Correro electronico</p>
-                    <label for="email"></label>
-                    <input type="email"
-                    id="email"
-                    name="email"
-                    required
-                    autofocus>
-                </div>
-
-                
-                <div class="form-group">
-                    <p class="Log_txt">Contraseña</p>
-                    <label for="password"></label>
-                    <input type="password"
-                    id="password"
-                    name="password"
-                    required
-                    autofocus>
-                </div>
-
-                <div class="Lwr_Log">
-
-                    <div class="Log_Btn">
-                        <input class="submit" type="submit" value="Ingresar">
-                    </div>
-
-                    <div class="Reg_Lnk">
-                        <p id="No_Acc_Txt">Tienes cuenta? </p>
-                        <a href="/signin.html" id="Log_Lnk"> Iniciar Sesion</a>
-                    </div>
-                    
-                </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+  </div>
 </body>
 </html>
 
