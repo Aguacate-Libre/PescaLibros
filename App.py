@@ -473,8 +473,14 @@ def signup():
         nombre_usuario = request.form.get('nombre_usuario') 
         email = request.form.get('email')
         password = request.form.get('password')
-        DOB = request.form.get('fecha_registro')
-        edad = date.year - DOB
+        # Cambio a fechas
+        DOB_str = request.form.get('fecha_registro') 
+        if DOB_str:
+            # Convertir a entero
+            year_nacimiento = int(DOB_str.split('-')[0])
+            edad = date.today().year - year_nacimiento
+        else:
+            edad = 0
         if not nombre_usuario or not email or not password or not edad:
             flash('Por favor, llena todos los campos.')
             return redirect(url_for('signup'))
