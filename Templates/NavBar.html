@@ -10,28 +10,35 @@
 <body>
  
     <!-- ===================== NAVBAR ===================== -->
-    <nav id="Navbar">
+        <nav id="Navbar">
         <div class="Nav-Logo">
-            <img src="/static/assets/icons/Logo_pescaLibros.png" height="30px" width="30px">
+            <a href="/"><img src="/static/assets/icons/Logo_pescaLibros.png" height="30px" width="30px"></a>
+            
             <p id="Brnd_Nm">Pesca Libros</p>
         </div>
+
         <div class="Nav-Links">
             <ul>
-                {% if session.logged_in %}
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/gallery.html">Galeria</a></li>
-                <li><a href="/about">Nosotros</a></li>
-                <li><a href="/contacto">Contacto</a></li>
-                <li><a href="/shelf.html">Librero</a></li>
-                <li><a href="/account.html">Mi Cuenta</a></li>
+
+                {% if current_user.is_authenticated %}
+
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/gallery.html">Galeria</a></li>
+                    <li><a href="/about">Nosotros</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                    <li><a href="/shelf.html">Librero</a></li>
+                    <li><a href="/perfil">Mi Cuenta</a></li>
+                    <li><a href="/logout">Cerrar Sesión</a></li>
+
                 {% else %}
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/gallery.html">Galeria</a></li>
-                <li><a href="/about">Nosotros</a></li>
-                <li><a href="/contacto">Contacto</a></li>
-                <li><a href="/signin.html">Iniciar Sesión</a></li>
-                <li><a href="/signup.html">Registrarse</a></li>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/gallery.html">Galeria</a></li>
+                    <li><a href="/about">Nosotros</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                    <li><a href="/signin.html">Iniciar Sesión</a></li>
+
                 {% endif %}
+
             </ul>
         </div>
     </nav>

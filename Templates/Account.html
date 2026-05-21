@@ -17,13 +17,17 @@
 <body>
     <div class="User">
         <div class="User-PFP">
-            <img src="">
+            <img
+                src="{{ current_user.foto_perfil }}"
+                alt="Foto de perfil"
+            >
         </div>
+
         <div class="User-Data">
-            <h1>Nombre</h1>
+            <h1>{{ current_user.nombre_usuario }}</h1>
             <div class="Data-Grid">
                 <div class="User-Foll-Loc">
-                    <p class="Foll">Seguidores</p>
+                    <p class="Foll">{{ current_user.seguidores }} Seguidores</p>
                     <div class="Loc">
                         <div class="icon_loc">
                             <img src="static/assets/icons/globo.png" alt="">
@@ -36,15 +40,26 @@
 
             </div>
             <div class="User-Des">
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>Mis libros favoritos →</p>
             </div>
         </div>
-
+      
+    
         <div class="User-Favs">
+            
+            {% for libro in favoritos %}
+
             <div class="User-Fav-Book">
-                <img src="">
+
+                <img src="{{ libro.portada }}" alt="{{ libro.nombre_libro }}">
+
+                
+
             </div>
-            <p>Favoritos de</p>
+            
+            {% endfor %}
+            
+
         </div>
     </div>
 
@@ -52,10 +67,21 @@
         <h1>Libros que vende</h1>
         <div class="Sale-Books">
             <div class="Sale-Books-grid">
+
+                {% for venta in mis_ventas %}
+
                 <div class="Book">
-                    <img src="" alt="">
+
+                    <img src="{{ venta.libro.portada }}" alt="">
+
+                    <h3>{{ venta.nombre_libro }}</h3>
+
+                    <p>${{ venta.precio }}</p>
+
                 </div>
-                
+
+                {% endfor %}
+
             </div>
         </div>
     </div>

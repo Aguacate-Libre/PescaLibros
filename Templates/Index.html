@@ -50,55 +50,33 @@
             </aside>
             
             <section id="Gll_Bk_Sec">
+                {% for libro in libros %}
 
-                    <div class="Bk_Grd">
-                        <div id="gll_bk">
-                            <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTqGuQV6t5gARW0iAB_HKT3IuUal87cmmd2OstNRRMKudsojEjVVbhPX04OuRtrEevDUELIAfnJpexrcLCC-Cjw7tiDGEytmoUhqo_wHXRhpTHG6_X6vckpTQ" alt="Libro"
-                            height="auto" width="150px">
-                        </div>
+                <div class="Bk_Grd">
+
+                    <div id="gll_bk">
+
+                        <a href="{{ url_for('detalle_libro', libro_id=libro.id_libro) }}">
+
+                            <img
+                                src="{{ libro.portada }}"
+                                alt="{{ libro.nombre_libro }}"
+                                width="150px"
+                            >
+
+                        </a>
+
+                        <h3>{{ libro.nombre_libro }}</h3>
+
+                        <p>{{ libro.autor }}</p>
+
+                        <p>${{ libro.precio }}</p>
+
                     </div>
 
-                    <div class="Bk_Grd">
-                        <div id="gll_bk">
-                            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSZshEZvzOUFgdzYdvEpAjRNv14eo9-6Y5aQmvBHDWdxUIk_aOUmSPWCucgoj9LZz9NmQsqmLKZfLwBbac4s0r8ZuRvZo5u" alt="Libro"
-                            height="auto" width="150px">
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="Bk_Grd">
-                        <div id="gll_bk">
-                            <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQITxajWHn3zvUPXj9GAsH-C8-1PNHyS3o0XrqGWTYk85f5IdKlcF1tr2ejh9Ynh9y1g6vrCS_WiLXzd8RB5K8knwaoGWe2bO5XGACOAXp9Ve45w6bO9Vlzig" alt="Libro"
-                            height="auto" width="150px">
-                        </div>
-                    </div>
-
-                    <div class="Bk_Grd">
-                        <div id="gll_bk">
-                            <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcSGQ-Gyco3p3QrCNS2cT3VpeaCP-JZQpbobcfJsoaRDfRKYDLfoxWszUP__4hpyxFqatHNEgn2vUy-7FTHQmXu9g1xizz9Rs-C9ek0VYKpcMhyrUQVJ7Hxwqg" alt="Libro"
-                            height="auto" width="150px">
-                        </div>
-                    </div>
-
-                    <div class="Bk_Grd">
-                        <div id="gll_bk">
-                            <img src="https://cdn.kobo.com/book-images/Images/2c05cce6-392a-4056-a7cf-7eb796b34855/300/300/False/image.jpg" alt="Libro"
-                            height="auto" width="150px">
-                        </div>
-                    </div>
-
-                    <div class="Bk_Grd">
-                        <div id="gll_bk">
-                            <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRWRyMTfuL-FTppLRnVAtCt1T-4uo__aroiqfh09ouVJhfmI8DO9HbArQaJwTbCQ4f7nmTWEkcgsUr2OZbsKDntO0e-iN_YIPy8XrH_dE3p" alt="Libro"
-                            height="auto" width="150px">
-                        </div>
-                    </div>
-
-                    <div class="Bk_Grd">
-                        <div id="gll_bk">
-                            <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcQNG8wywUzvaRP5wxUJffQe-2u2419-I5Lox8VhaS-94atr1o1eLHAQ8H9BZ2Nd-ve5WuXvU3Au0xhl7d1zkRKzr27kSbmfZ4IAnSOPW-I3fOBO2p1hxgru" alt="Libro"
-                            hheight="auto" width="150px">
-                        </div>
-                    </div>
+                {% endfor %}
                 
             </section>
 

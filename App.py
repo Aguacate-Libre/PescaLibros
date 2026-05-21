@@ -10,9 +10,9 @@ from werkzeug.utils import secure_filename
 from datetime import date
 
 load_dotenv()
-
 app = Flask(__name__, template_folder='templates', static_folder='static')
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+
 
 db_user = os.getenv('USER')
 db_password = os.getenv('PASSWORD')
@@ -69,7 +69,13 @@ with app.app_context():
 
 @app.route('/')
 def inicio():
-    return render_template('index.html')
+
+    libros = Libro.query.limit(8).all()
+
+    return render_template(
+        'index.html',
+        libros=libros
+    )
 
 @app.route('/gallery.html')
 def gallery():
@@ -526,10 +532,10 @@ def signin():
         
         if usuario and bcrypt.check_password_hash(usuario.contrasena, password):
             login_user(usuario)
-            return redirect(url_for('inicio')) 
+            return redirect(url_for('inicio'))
+            
         else:
             flash('Correo o contraseña incorrectos.')
-            
     return render_template('signin.html')
 
 @app.route('/auth', methods=['GET', 'POST'])

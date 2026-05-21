@@ -110,6 +110,7 @@ class VentaUsuario(db.Model):
     precio = db.Column(db.Numeric(10, 2), nullable=False)
     estado_venta = db.Column(db.Enum('disponible', 'vendido', 'pausado'), nullable=False, default='disponible')
     fecha_publicacion = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
+    libro = db.relationship('Libro')
 
 class Seguimiento(db.Model):
     __tablename__ = 'Seguimientos'

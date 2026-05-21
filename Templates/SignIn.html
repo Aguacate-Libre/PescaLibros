@@ -1,7 +1,3 @@
-{% extends "NavBar.html" %}
-
-{% block title %}signin{% endblock %}
-
 {% block content %}
 
 <!DOCTYPE html>
@@ -21,7 +17,8 @@
 
             <p class="Log_Ttx">Inicia Sesion</p>
 
-            <form>
+            <form method="POST" action="/signin.html">
+    
 
                 <div class="Log_Email">
                     <p class="Log_txt">Correro electronico</p>
@@ -33,7 +30,6 @@
                     autofocus>
                 </div>
 
-                
                 <div>
                     <p class="Log_txt">Contraseña</p>
                     <label for="password"></label>
@@ -45,7 +41,7 @@
                 </div>
 
                 <div>
-                    <a href="/forgot-password" id="Log_Lnk">olvide mi contraseña</a>
+                    <a href="/forgot-password" id="Log_Lnk">Olvide mi contraseña</a>
                 </div>
 
                 <div class="Lwr_Log">
@@ -55,7 +51,7 @@
                     </div>
 
                     <div class="Reg_Lnk">
-                        <p id="No_Acc_Txt">No tienees cuenta? </p>
+                        <p id="No_Acc_Txt">¿No tienes cuenta?</p>
                         <a href="/signup.html" id="Log_Lnk"> Registrate</a>
                     </div>
 
