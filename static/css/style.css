@@ -345,6 +345,7 @@ input[type=text] {
     border-width: 1px;
     width: 100%;
     margin-top: 15px;
+    color: white;
 }
 
 input[type=text]::placeholder {
@@ -413,6 +414,12 @@ button {
     font-family: "Poppins", sans-serif;
     margin-top: 30px;
     font-size: 16px;
+}
+
+button a{
+  text-decoration: none;
+  color: white;
+  font-family: "Poppins", sans-serif;
 }
 
 /*SingIn*/

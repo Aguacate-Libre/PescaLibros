@@ -21,7 +21,7 @@
   <section class="cart-block">
     <div class="block-header">
       <h2>Mi Carrito</h2>
-      <span class="item-count" id="item-count">3 artículos</span>
+      <span class="item-count" id="item-count">articulo</span>
     </div>
 
     <!-- Estado vacío (oculto si hay items) -->
@@ -34,59 +34,28 @@
     <!-- Lista de libros -->
     <ul class="book-list" id="book-list">
 
-      <li class="book-item" data-id="1">
-        <img class="book-cover" src="https://covers.openlibrary.org/b/id/8739161-M.jpg" alt="Portada" />
-        <div class="book-info">
-          <h4 class="book-title">Cien Años de Soledad</h4>
-          <p class="book-author">Gabriel García Márquez</p>
-          <span class="book-type pasta-blanda">Pasta blanda</span>
-        </div>
-        <div class="book-controls">
-          <p class="book-price">$299.00</p>
-          <div class="qty-control">
-            <button class="qty-btn minus" data-id="1">−</button>
-            <span class="qty-value" id="qty-1">1</span>
-            <button class="qty-btn plus" data-id="1">+</button>
-          </div>
-          <button class="btn-remove" data-id="1">Eliminar</button>
-        </div>
-      </li>
+      {% for libro in libros %}
 
-      <li class="book-item" data-id="2">
-        <img class="book-cover" src="https://covers.openlibrary.org/b/id/12891854-M.jpg" alt="Portada" />
-        <div class="book-info">
-          <h4 class="book-title">El Nombre del Viento</h4>
-          <p class="book-author">Patrick Rothfuss</p>
-          <span class="book-type pasta-dura">Pasta dura</span>
-        </div>
-        <div class="book-controls">
-          <p class="book-price">$450.00</p>
-          <div class="qty-control">
-            <button class="qty-btn minus" data-id="2">−</button>
-            <span class="qty-value" id="qty-2">2</span>
-            <button class="qty-btn plus" data-id="2">+</button>
+        <li class="book-item" data-id="1">
+          <img class="book-cover" src="{{ libro.portada }}" alt="{{ libro.nombre_libro }}" />
+          <div class="book-info">
+            <h4 class="book-title">{{ libro.nombre_libro }}</h4>
+            <p class="book-author">{{ libro.autor }}</p>
+            <span class="book-type pasta-blanda">{{ libro.tiene_pasta_blanda }}</span>
           </div>
-          <button class="btn-remove" data-id="2">Eliminar</button>
-        </div>
-      </li>
+          <div class="book-controls">
+            <p class="book-price">${{ libro.precio }}</p>
+            <div class="qty-control">
+              <button class="qty-btn minus" data-id="1">−</button>
+              <span class="qty-value" id="qty-1">1</span>
+              <button class="qty-btn plus" data-id="1">+</button>
+            </div>
+            <form action="{{ url_for('eliminar_del_librero', libro_id=libro.id_libro) }}" method="DELETE" class="btn-remove" data-id="1">Eliminar</form>
+            <!-- form action="{{ url_for('agregar_al_librero', libro_id=libro.id_libro) }}" method="POST" -->
+          </div>
+        </li>
 
-      <li class="book-item" data-id="3">
-        <img class="book-cover" src="https://covers.openlibrary.org/b/id/10909258-M.jpg" alt="Portada" />
-        <div class="book-info">
-          <h4 class="book-title">Sapiens</h4>
-          <p class="book-author">Yuval Noah Harari</p>
-          <span class="book-type digital">Digital</span>
-        </div>
-        <div class="book-controls">
-          <p class="book-price">$149.00</p>
-          <div class="qty-control">
-            <button class="qty-btn minus" data-id="3">−</button>
-            <span class="qty-value" id="qty-3">1</span>
-            <button class="qty-btn plus" data-id="3">+</button>
-          </div>
-          <button class="btn-remove" data-id="3">Eliminar</button>
-        </div>
-      </li>
+      {% endfor %}
 
     </ul>
 
@@ -94,7 +63,7 @@
     <div class="cart-footer">
       <div class="subtotal-row">
         <span>Subtotal</span>
-        <span id="subtotal">$1,047.00</span>
+        <span id="subtotal">$</span>
       </div>
       <div class="subtotal-row">
         <span>Envío</span>
@@ -103,7 +72,7 @@
       <div class="divider"></div>
       <div class="total-row">
         <span>Total</span>
-        <span id="total">$1,127.00</span>
+        <span id="total">$</span>
       </div>
       <button class="btn-save" style="width:100%; margin-top:20px;">Proceder al pago</button>
     </div>

@@ -297,7 +297,7 @@ def agregar_comentario(libro_id):
         
     return redirect(url_for('detalle_libro', libro_id=libro_id))
 
-@app.route('/add_to_shelf/<int:libro_id>')
+@app.route('/add_to_shelf/<int:libro_id>', methods=['POST'])
 @login_required
 def agregar_al_librero(libro_id):
     libro = Libro.query.get_or_404(libro_id)
@@ -327,7 +327,7 @@ def mi_librero():
     mis_libros = Libro.query.join(Librero).filter(Librero.id_usuario == current_user.id_usuario).all()
     return render_template('Shelf.html', libros=mis_libros)
 
-@app.route('/remove_from_shelf/<int:libro_id>', methods=['POST'])
+@app.route('/remove_from_shelf/<int:libro_id>', methods=['DELETE'])
 @login_required
 def eliminar_del_librero(libro_id):
     # Ya está usando POST como acordamos para mayor seguridad

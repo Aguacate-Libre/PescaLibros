@@ -54,11 +54,11 @@
                             </button>
                         </form>
 
-                        <a href="{{ url_for('agregar_al_librero', libro_id=libro.id_libro) }}">
+                        <form action="{{ url_for('agregar_al_librero', libro_id=libro.id_libro) }}" method="POST">
                             <button class="btn_regresar">
                                 + Agregar al librero
                             </button>
-                        </a>
+                        </form>
                     </div>
                     
                 </div>
